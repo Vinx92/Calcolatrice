@@ -1,4 +1,3 @@
 # Calcolatrice
-per esercitarmi <br>
-javascript arriverà <br>
+<br>
 https://vinx92.github.io/Calcolatrice/
