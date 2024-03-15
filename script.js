@@ -15,12 +15,14 @@ let operatoreScelto;
 let numeroUno;
 let numeroDue;
 let risultato;
-let ce = false;
+let risultatoCalcolato = false;
+console.log(operatoreScelto);
 
 for (let i = 0; i < NUMERI.length; i++) {
   NUMERI[i].addEventListener("click", () => {
-    if(ce === false) {
+    if(risultatoCalcolato === false) {
     DISPLAY.textContent += NUMERI[i].value;
+    console.log(NUMERI[i])
   }else{
     return;
   }
@@ -29,11 +31,51 @@ for (let i = 0; i < NUMERI.length; i++) {
 
 for (let i = 0; i < OPERATORI.length; i++) {
   OPERATORI[i].addEventListener("click", () => {
-    ce = false
+    if(operatoreScelto === undefined) {
     numeroUno = parseFloat(DISPLAY.textContent);
     operatoreScelto = OPERATORI[i].value;
     DISPLAY.textContent = "";
-    DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto}`
+    DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto}`;
+    risultatoCalcolato = false;
+  }else {
+    switch (operatoreScelto) {
+      case "+":
+        numeroDue = parseInt(DISPLAY.textContent);
+        risultato = numeroUno + numeroDue;
+        DISPLAY.textContent = risultato;
+        DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
+        operatoreScelto = undefined;
+        console.log(operatoreScelto)
+        break;
+  
+      case "-":
+        numeroDue = parseInt(DISPLAY.textContent);
+        risultato = numeroUno - numeroDue;
+        DISPLAY.textContent = risultato;
+        DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
+        operatoreScelto = undefined;
+        console.log(operatoreScelto)
+        break;
+  
+      case "/":
+        numeroDue = parseInt(DISPLAY.textContent);
+        risultato = numeroUno / numeroDue;
+        DISPLAY.textContent = risultato;
+        DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
+        operatoreScelto = undefined;
+        console.log(operatoreScelto)
+        break;
+  
+      case "*":
+        numeroDue = parseInt(DISPLAY.textContent);
+        risultato = numeroUno * numeroDue;
+        DISPLAY.textContent = risultato;
+        DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
+        operatoreScelto = undefined;
+        console.log(operatoreScelto)
+        break;
+    }
+  }
   });
 }
 
@@ -44,7 +86,9 @@ UGUALE.addEventListener("click", () => {
       risultato = numeroUno + numeroDue;
       DISPLAY.textContent = risultato;
       DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
-      ce = true;
+      operatoreScelto = undefined;
+      console.log(operatoreScelto)
+      risultatoCalcolato = true;
       break;
 
     case "-":
@@ -52,7 +96,9 @@ UGUALE.addEventListener("click", () => {
       risultato = numeroUno - numeroDue;
       DISPLAY.textContent = risultato;
       DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
-      ce = true;
+      operatoreScelto = undefined;
+      console.log(operatoreScelto)
+      risultatoCalcolato = true;
       break;
 
     case "/":
@@ -60,7 +106,9 @@ UGUALE.addEventListener("click", () => {
       risultato = numeroUno / numeroDue;
       DISPLAY.textContent = risultato;
       DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
-      ce = true;
+      operatoreScelto = undefined;
+      console.log(operatoreScelto)
+      risultatoCalcolato = true;
       break;
 
     case "*":
@@ -68,18 +116,20 @@ UGUALE.addEventListener("click", () => {
       risultato = numeroUno * numeroDue;
       DISPLAY.textContent = risultato;
       DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
-      ce = true;
+      operatoreScelto = undefined;
+      console.log(operatoreScelto)
+      risultatoCalcolato = true;
       break;
   }
 });
 
 AC.addEventListener("click", () => {
-  ce = false
+  risultatoCalcolato = false
   DISPLAY.textContent = "";
 });
 
 AC.addEventListener('dblclick', () => {
-  ce = false
+  risultatoCalcolato = false
   DISPLAY_DUE.textContent = "";
 })
 
