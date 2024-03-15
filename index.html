@@ -1,187 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="calculator.png" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Rubik+Mono+One&display=swap"
-      rel="stylesheet"
-    />
-    <title>Calcolatrice</title>
-    <style>
-      body {
-        background-color: #2d2d2d;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        height: 100vh;
-      }
 
-      .boxcalcolatrice {
-        display: grid;
-        justify-content: center;
-        grid-template-columns: 60px 60px 60px 60px;
-        gap: 10px;
-        width: 270px;
-        padding: 30px;
-        margin: auto;
-        grid-template-rows: 40px 45px 45px 45px 45px 45px;
-        background-color: #7d72d5;
-        border-radius: 20px;
-        border: 5px groove #978de5;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="calculator.png" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Rubik+Mono+One&display=swap"
+    rel="stylesheet" />
+  <title>Calcolatrice</title>
+  <style>
+    body {
+      background-color: #2d2d2d;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      height: 100vh;
+    }
 
-      .item {
-        border-radius: 15px;
-        border: 2px groove #978de5;
-        padding: 10px;
-      }
+    .boxcalcolatrice {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: 60px 60px 60px 60px;
+      gap: 10px;
+      width: 270px;
+      padding: 30px;
+      margin: auto;
+      grid-template-rows: 40px 45px 45px 45px 45px 45px;
+      background-color: #7d72d5;
+      border-radius: 20px;
+      border: 5px groove #978de5;
+    }
 
-      .scritta {
-        grid-column: 1/5;
-        text-align: right;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        font-family: "Protest Guerrilla", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-        font-size: 20px;
-        background-color: #12b5129e;
-        color: lime;
-        border: 2px groove #978de5;
-        cursor: text;
-        user-select: none;
-      }
+    .item {
+      border-radius: 15px;
+      border: 2px groove #978de5;
+      padding: 10px;
+    }
 
-      .ac,
-      .cancella,
-      .percento,
-      .diviso,
-      .sette,
-      .otto,
-      .nove,
-      .per,
-      .quattro,
-      .cinque,
-      .sei,
-      .meno,
-      .uno,
-      .due,
-      .tre,
-      .piu,
-      .zero,
-      .virgola,
-      .uguale {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        font-weight: bolder;
-        font-family: "Rubik Mono One", monospace;
-        font-weight: 400;
-        font-style: normal;
-        cursor: pointer;
-        box-shadow: inset -8px -7px 12px -2px #484372;
-        user-select: none;
-      }
+    .display {
+      grid-column: 1/5;
+      text-align: right;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-family: "Protest Guerrilla", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 20px;
+      background-color: #12b5129e;
+      color: lime;
+      border: 2px groove #978de5;
+      cursor: text;
+      user-select: none;
+    }
 
-      .sette,
-      .otto,
-      .nove,
-      .quattro,
-      .cinque,
-      .sei,
-      .uno,
-      .due,
-      .tre,
-      .zero,
-      .virgola {
-        background-color: #a195fa;
-      }
+    .ac,
+    .cancella,
+    .operatori,
+    .numeri,
+    .uguale {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bolder;
+      font-family: "Rubik Mono One", monospace;
+      font-weight: 400;
+      font-style: normal;
+      cursor: pointer;
+      box-shadow: inset -8px -7px 12px -2px #484372;
+      user-select: none;
+    }
 
-      .percento,
-      .diviso,
-      .per,
-      .meno,
-      .piu,
-      .uguale {
-        background-color: #5cffd6;
-        box-shadow: inset -8px -7px 12px -2px #297763;
-      }
+    .numeri {
+      background-color: #a195fa;
+    }
 
-      .percento:active,
-      .diviso:active,
-      .per:active,
-      .meno:active,
-      .piu:active,
-      .uguale:active {
-        box-shadow: inset 8px 7px 12px -2px #297763;
-      }
+    .numeri:active {
+      box-shadow: inset 8px 7px 12px -2px #484372;
+    }
 
-      .ac,
-      .cancella {
-        background-color: #d7335c;
-        box-shadow: inset -8px -7px 12px -2px #780000;
-      }
+    .operatori,
+    .uguale {
+      background-color: #5cffd6;
+      box-shadow: inset -8px -7px 12px -2px #297763;
+    }
 
-      .ac:active,
-      .cancella:active {
-        box-shadow: inset 8px 7px 12px -2px #780000;
-      }
+    .operatori:active,
+    .uguale:active {
+      box-shadow: inset 8px 7px 12px -2px #297763;
+    }
 
-      .sette:active,
-      .otto:active,
-      .nove:active,
-      .quattro:active,
-      .cinque:active,
-      .sei:active,
-      .uno:active,
-      .due:active,
-      .tre:active,
-      .zero:active,
-      .virgola:active {
-        box-shadow: inset 8px 7px 12px -2px #484372;
-      }
+    .ac,
+    .cancella {
+      background-color: #d7335c;
+      box-shadow: inset -8px -7px 12px -2px #780000;
+    }
 
-      .zero {
-        grid-column: 1/3;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="boxcalcolatrice">
-      <div class="item scritta">0</div>
-      <div class="item ac">AC</div>
-      <div class="item cancella">
-        <img src="backspace-svgrepo-com.svg" alt="icona backspace" draggable="false"/>
-      </div>
-      <div class="item percento">%</div>
-      <div class="item diviso">/</div>
-      <div class="item sette">7</div>
-      <div class="item otto">8</div>
-      <div class="item nove">9</div>
-      <div class="item per">X</div>
-      <div class="item quattro">4</div>
-      <div class="item cinque">5</div>
-      <div class="item sei">6</div>
-      <div class="item meno">-</div>
-      <div class="item uno">1</div>
-      <div class="item due">2</div>
-      <div class="item tre">3</div>
-      <div class="item piu">+</div>
-      <div class="item zero">0</div>
-      <div class="item virgola">,</div>
-      <div class="item uguale">=</div>
+    .ac:active,
+    .cancella:active {
+      box-shadow: inset 8px 7px 12px -2px #780000;
+    }
+
+    .zero {
+      grid-column: 1/3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="boxcalcolatrice">
+    <div id="display" class="item display"></div>
+    <input id="ac" type="button" value="AC" class="item ac">
+    <div id="cancella" class="item cancella">
+      <img src="backspace-svgrepo-com.svg" alt="icona backspace" draggable="false" />
     </div>
-  </body>
+    <input type="button" value="%" class="item operatori">
+    <input type="button" value="/" class="item operatori">
+    <input type="button" value="7" class="item numeri">
+    <input type="button" value="8" class="item numeri">
+    <input type="button" value="9" class="item numeri">
+    <input type="button" value="*" class="item operatori">
+    <input type="button" value="4" class="item numeri">
+    <input type="button" value="5" class="item numeri">
+    <input type="button" value="6" class="item numeri">
+    <input type="button" value="-" class="item operatori">
+    <input type="button" value="1" class="item numeri">
+    <input type="button" value="2" class="item numeri">
+    <input type="button" value="3" class="item numeri">
+    <input type="button" value="+" class="item operatori">
+    <input type="button" value="0" class="item numeri zero">
+    <input type="button" value="." class="item numeri">
+    <input id="uguale" type="button" value="=" class="item uguale">
+  </input>
+</body>
+<script src="script.js"></script>
 </html>
