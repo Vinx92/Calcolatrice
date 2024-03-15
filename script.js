@@ -1,4 +1,5 @@
 const DISPLAY = document.getElementById("display");
+const DISPLAY_DUE = document.getElementById('displayDue')
 const AC = document.getElementById("ac");
 const CANCELLA = document.getElementById("cancella");
 const UGUALE = document.getElementById("uguale");
@@ -29,9 +30,10 @@ for (let i = 0; i < NUMERI.length; i++) {
 for (let i = 0; i < OPERATORI.length; i++) {
   OPERATORI[i].addEventListener("click", () => {
     ce = false
-    numeroUno = parseInt(DISPLAY.textContent);
+    numeroUno = parseFloat(DISPLAY.textContent);
     operatoreScelto = OPERATORI[i].value;
     DISPLAY.textContent = "";
+    DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto}`
   });
 }
 
@@ -41,6 +43,7 @@ UGUALE.addEventListener("click", () => {
       numeroDue = parseInt(DISPLAY.textContent);
       risultato = numeroUno + numeroDue;
       DISPLAY.textContent = risultato;
+      DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
       ce = true;
       break;
 
@@ -48,6 +51,7 @@ UGUALE.addEventListener("click", () => {
       numeroDue = parseInt(DISPLAY.textContent);
       risultato = numeroUno - numeroDue;
       DISPLAY.textContent = risultato;
+      DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
       ce = true;
       break;
 
@@ -55,6 +59,7 @@ UGUALE.addEventListener("click", () => {
       numeroDue = parseInt(DISPLAY.textContent);
       risultato = numeroUno / numeroDue;
       DISPLAY.textContent = risultato;
+      DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
       ce = true;
       break;
 
@@ -62,12 +67,7 @@ UGUALE.addEventListener("click", () => {
       numeroDue = parseInt(DISPLAY.textContent);
       risultato = numeroUno * numeroDue;
       DISPLAY.textContent = risultato;
-      ce = true;
-      break;
-    case "%":
-      numeroDue = parseInt(DISPLAY.textContent);
-      risultato = numeroUno * numeroDue / 100;
-      DISPLAY.textContent = risultato;
+      DISPLAY_DUE.textContent = `${numeroUno} ${operatoreScelto} ${numeroDue} ${UGUALE.value}`
       ce = true;
       break;
   }
@@ -77,6 +77,11 @@ AC.addEventListener("click", () => {
   ce = false
   DISPLAY.textContent = "";
 });
+
+AC.addEventListener('dblclick', () => {
+  ce = false
+  DISPLAY_DUE.textContent = "";
+})
 
 CANCELLA.addEventListener('click', () => {
   let arrString = DISPLAY.textContent.split('')
