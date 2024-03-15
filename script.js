@@ -14,20 +14,23 @@ let operatoreScelto;
 let numeroUno;
 let numeroDue;
 let risultato;
+let ce = false;
 
 for (let i = 0; i < NUMERI.length; i++) {
   NUMERI[i].addEventListener("click", () => {
+    if(ce === false) {
     DISPLAY.textContent += NUMERI[i].value;
+  }else{
+    return;
+  }
   });
 }
 
 for (let i = 0; i < OPERATORI.length; i++) {
   OPERATORI[i].addEventListener("click", () => {
+    ce = false
     numeroUno = parseInt(DISPLAY.textContent);
     operatoreScelto = OPERATORI[i].value;
-    console.log(
-      `il numero ricordato e: ${typeof numeroUno}, l'operatore scelto e: ${typeof operatoreScelto}`
-    );
     DISPLAY.textContent = "";
   });
 }
@@ -38,28 +41,45 @@ UGUALE.addEventListener("click", () => {
       numeroDue = parseInt(DISPLAY.textContent);
       risultato = numeroUno + numeroDue;
       DISPLAY.textContent = risultato;
+      ce = true;
       break;
 
     case "-":
       numeroDue = parseInt(DISPLAY.textContent);
       risultato = numeroUno - numeroDue;
       DISPLAY.textContent = risultato;
+      ce = true;
       break;
 
     case "/":
       numeroDue = parseInt(DISPLAY.textContent);
       risultato = numeroUno / numeroDue;
       DISPLAY.textContent = risultato;
+      ce = true;
       break;
 
     case "*":
       numeroDue = parseInt(DISPLAY.textContent);
       risultato = numeroUno * numeroDue;
       DISPLAY.textContent = risultato;
+      ce = true;
+      break;
+    case "%":
+      numeroDue = parseInt(DISPLAY.textContent);
+      risultato = numeroUno * numeroDue / 100;
+      DISPLAY.textContent = risultato;
+      ce = true;
       break;
   }
 });
 
-AC.addEventListener('click', () => {
-    DISPLAY.textContent= ''
+AC.addEventListener("click", () => {
+  ce = false
+  DISPLAY.textContent = "";
+});
+
+CANCELLA.addEventListener('click', () => {
+  let arrString = DISPLAY.textContent.split('')
+  arrString.pop()
+  DISPLAY.textContent = arrString.join('')
 })
