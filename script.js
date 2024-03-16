@@ -11,6 +11,7 @@ let numeroDue;
 let risultato;
 let risultatoCalcolato = false;
 
+
 for (let i = 0; i < NUMERI.length; i++) {
   NUMERI[i].addEventListener("click", () => {
     if (DISPLAY_DUE.textContent.includes(".") && NUMERI[i].value === ".") {
